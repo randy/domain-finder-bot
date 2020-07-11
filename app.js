@@ -10,7 +10,7 @@ const web = new WebClient(process.env.SLACK_BOT_TOKEN);
 
 const papa = require('papaparse');
 
-app.event("file_created", async ({ event, context, body, payload}) => {
+app.event("file_created", async ({ event }) => {
   console.log(`User ${event.user_id} on channel: ${event.channel} created a file.`);
 });
 
@@ -22,7 +22,7 @@ async function noBotMessages({ message, next }) {
 }
 
 // The listener only receives messages from humans
-app.message(async ({ event, message }) => {
+app.message(async ({ event }) => {
 
   if (event && event.files && event.files[0].filetype === 'csv') {
 
@@ -51,7 +51,7 @@ app.message(async ({ event, message }) => {
         let filename = uploadFile.file.name.slice(0, -4) + "-out.csv";
 
         try {
-          const result = await app.client.files.upload({
+          await app.client.files.upload({
             token: process.env.SLACK_BOT_TOKEN,
             channels: event.channel,
             initial_comment: `Here ya go, <@${event.user}>!`,
@@ -59,8 +59,6 @@ app.message(async ({ event, message }) => {
             filename: filename,
             filetype: 'csv',
           });
-
-          console.log(result);
 
         } catch (e) {
           console.log(e);
