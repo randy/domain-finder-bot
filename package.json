@@ -1,5 +1,5 @@
 {
-  "name": "Domain Finder",
+  "name": "domain-finder-bot",
   "version": "0.1.0",
   "description": "A basic Slack app that takes a CSV file, finds the Email address column, and adds a Domain column immediately after with the correct data.",
   "main": "app.js",
@@ -7,7 +7,7 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "@slack/bolt": "^1.8.0",
+    "@slack/bolt": "^2.1.1",
     "node-rest-client": "^3.1.0",
     "papaparse": "^5.2.0"
   },
@@ -15,11 +15,16 @@
     "node": "11.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/bolt-app-template"
+    "url": "git+https://github.com/randyFRS/domain-finder-bot.git"
   },
   "license": "MIT",
   "keywords": [
     "node",
     "express"
-  ]
+  ],
+  "bugs": {
+    "url": "https://github.com/randyFRS/domain-finder-bot/issues"
+  },
+  "homepage": "https://github.com/randyFRS/domain-finder-bot#readme",
+  "author": ""
 }
